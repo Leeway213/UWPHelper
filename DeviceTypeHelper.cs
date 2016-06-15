@@ -18,7 +18,7 @@ namespace UWPHelpers
         Other
     }
 
-    public static class DeviceFamilyHelper
+    public static class DeviceTypeHelper
     {
         public static DeviceType GetDeviceType()
         {
