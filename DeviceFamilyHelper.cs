@@ -8,27 +8,7 @@ using Windows.UI.ViewManagement;
 
 namespace UWPHelpers
 {
-    public static class DeviceFamilyHelper
-    {
-        public static DeviceFamilyType GetDeviceFamilyType()
-        {
-            switch (AnalyticsInfo.VersionInfo.DeviceFamily)
-            {
-                case "Windows.Mobile":
-                    return DeviceFamilyType.Phone;
-                case "Windows.Desktop":
-                    return UIViewSettings.GetForCurrentView().UserInteractionMode == UserInteractionMode.Mouse ? DeviceFamilyType.Desktop : DeviceFamilyType.Tablet;
-                case "Windows.Universal":
-                    return DeviceFamilyType.IoT;
-                case "Windows.Team":
-                    return DeviceFamilyType.SurfaceHub;
-                default:
-                    return DeviceFamilyType.Other;
-            }
-        }
-    }
-
-    public enum DeviceFamilyType
+    public enum DeviceType
     {
         Phone,
         Desktop,
@@ -36,5 +16,25 @@ namespace UWPHelpers
         IoT,
         SurfaceHub,
         Other
+    }
+
+    public static class DeviceFamilyHelper
+    {
+        public static DeviceType GetDeviceType()
+        {
+            switch (AnalyticsInfo.VersionInfo.DeviceFamily)
+            {
+                case "Windows.Mobile":
+                    return DeviceType.Phone;
+                case "Windows.Desktop":
+                    return UIViewSettings.GetForCurrentView().UserInteractionMode == UserInteractionMode.Mouse ? DeviceType.Desktop : DeviceType.Tablet;
+                case "Windows.Universal":
+                    return DeviceType.IoT;
+                case "Windows.Team":
+                    return DeviceType.SurfaceHub;
+                default:
+                    return DeviceType.Other;
+            }
+        }
     }
 }
